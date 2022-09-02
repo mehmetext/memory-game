@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html,
+	body,
+	#root {
+		@apply h-full w-full;
+	}
+
+	body {
+		@apply font-delius;
+	}
+
+	.card {
+		transform-style: preserve-3d;
+		transition: 0.6s cubic-bezier(0.65, 0.05, 0.36, 1);
+		transform: perspective(180px);
+		@apply relative h-48 w-full hover:z-50;
+	}
+
+	.card.opened {
+		transform: rotateY(180deg);
+	}
+
+	.card-inner {
+		backface-visibility: hidden;
+		@apply absolute h-full w-full rounded flex items-center justify-center select-none bg-gray-200 p-1;
+	}
+
+	.front {
+		@apply text-8xl text-gray-500 cursor-pointer;
+	}
+
+	.back {
+		transform: rotateY(180deg);
+	}
+}
