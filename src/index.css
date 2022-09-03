@@ -24,13 +24,17 @@
 		transform: rotateY(180deg);
 	}
 
+	.card.true {
+		transform: rotateY(180deg);
+	}
+
 	.card-inner {
 		backface-visibility: hidden;
 		@apply absolute h-full w-full rounded flex items-center justify-center select-none bg-gray-200 p-1;
 	}
 
 	.front {
-		@apply text-8xl text-gray-500 cursor-pointer;
+		@apply text-8xl text-gray-500;
 	}
 
 	.back {

@@ -1,17 +1,24 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { toggleItemDispatch } from "../store/dispatch";
+import { useGame } from "../store/game";
 
 export default function Item({ item }) {
-	const [opened, setOpened] = useState(false);
+	const { disabled } = useGame();
 
 	const handleClick = () => {
-		setOpened(!opened);
+		if (!item.true) toggleItemDispatch(item);
 	};
 
 	return (
 		<div
-			onClick={handleClick}
-			className={classNames({ card: true, opened: opened })}
+			onClick={disabled ? null : handleClick}
+			className={classNames({
+				card: true,
+				opened: item.opened,
+				true: item.true,
+				"cursor-pointer": !disabled && !item.true,
+				"cursor-not-allowed": disabled || item.true,
+			})}
 		>
 			<div className="card-inner front">?</div>
 			<div className="card-inner back">
