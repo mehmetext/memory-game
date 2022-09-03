@@ -1,6 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 
-export const frameworks = [
+export const items = [
 	"angular2",
 	"vue",
 	"react",
@@ -20,13 +20,13 @@ export const frameworks = [
 
 export const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
-export const items = () => {
-	let items = [...frameworks, ...frameworks];
+export const shuffled = () => {
+	let items2 = [...items, ...items];
 
-	items = items.map((item) => {
+	items2 = items2.map((item) => {
 		return { id: nanoid(), name: item, opened: false, true: false };
 	});
 
-	shuffle(items);
-	return items;
+	shuffle(items2);
+	return items2;
 };

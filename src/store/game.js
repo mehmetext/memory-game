@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 
-import { items } from "../utils";
+import { items, shuffled } from "../utils";
+
+const initialState = {
+	initialItems: items,
+	items: shuffled(),
+	openedItems: [],
+	trueItems: [],
+	disabled: false,
+	score: 100,
+	end: false,
+};
 
 const slice = createSlice({
 	name: "game",
-	initialState: {
-		items: items(),
-		openedItems: [],
-		trueItems: [],
-		disabled: false,
-	},
+	initialState: initialState,
 	reducers: {
 		flipCards: (state, action) => {
 			state.items.map((item) => {
@@ -54,10 +59,10 @@ const slice = createSlice({
 			}
 		},
 		correct: (state, action) => {
-			console.log("doğru");
+			state.score += 50;
 		},
 		wrong: (state, action) => {
-			console.log("yanlış");
+			state.score -= 10;
 		},
 		closeOpenedCards: (state, action) => {
 			state.openedItems = [];
@@ -67,6 +72,17 @@ const slice = createSlice({
 			state.trueItems.push(state.openedItems[0].name);
 			state.openedItems = [];
 			state.disabled = false;
+		},
+		end: (state, action) => {
+			state.end = true;
+		},
+		playAgain: (state, action) => {
+			state.items = shuffled();
+			state.openedItems = [];
+			state.trueItems = [];
+			state.disabled = false;
+			state.score = 100;
+			state.end = false;
 		},
 	},
 });
@@ -80,6 +96,8 @@ export const {
 	wrong,
 	closeOpenedCards,
 	fixOpenedCards,
+	end,
+	playAgain,
 } = slice.actions;
 
 export default slice.reducer;

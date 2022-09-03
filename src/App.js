@@ -6,8 +6,8 @@ import store from "./store";
 function App() {
 	return (
 		<Provider store={store}>
-			<div className="container mx-auto py-8">
-				<Logo />
+			<Logo />
+			<div className="container md:max-w-3xl mx-auto">
 				<Game />
 			</div>
 		</Provider>

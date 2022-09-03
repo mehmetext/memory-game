@@ -6,6 +6,8 @@ import {
 	wrong,
 	closeOpenedCards,
 	fixOpenedCards,
+	end,
+	playAgain,
 } from "./game";
 
 export const toggleItemDispatch = (payload) => {
@@ -30,4 +32,12 @@ export const closeOpenedCardsDispatch = () => {
 
 export const fixOpenedCardsDispatch = () => {
 	store.dispatch(fixOpenedCards());
+};
+
+export const endDispatch = () => {
+	store.dispatch(end());
+};
+
+export const playAgainDispatch = () => {
+	store.dispatch(playAgain());
 };

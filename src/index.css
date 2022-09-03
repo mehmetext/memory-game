@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-	html,
-	body,
-	#root {
-		@apply h-full w-full;
-	}
-
 	body {
 		@apply font-delius;
 	}
@@ -17,7 +11,7 @@
 		transform-style: preserve-3d;
 		transition: 0.6s cubic-bezier(0.65, 0.05, 0.36, 1);
 		transform: perspective(180px);
-		@apply relative h-48 w-full hover:z-50;
+		@apply relative h-48 w-full;
 	}
 
 	.card.opened {
